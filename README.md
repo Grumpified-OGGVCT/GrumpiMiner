@@ -173,6 +173,45 @@ GrumpiMiner is built on the principle that **interactions matter**. A system may
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
+## Ollama Cloud Integration
+
+GrumpiMiner integrates with Ollama Cloud service for AI-powered analysis and insights:
+
+- 🤖 **Automated Code Analysis**: AI-powered code quality and architecture review
+- 📊 **Intelligent Reporting**: Structured analysis with actionable recommendations
+- 🔍 **Dimension Exploration**: AI-assisted dimension interaction discovery
+- 📚 **Auto-Documentation**: Automated documentation generation and publishing
+
+### Quick Setup
+
+```bash
+# Set environment variables
+export OLLAMA_BASE_URL="https://api.ollama.cloud"  # or http://localhost:11434
+export OLLAMA_API_KEY="your-api-key"  # if using cloud
+
+# Run analysis
+python scripts/ollama_analysis.py --model llama3.2:3b --analysis-type comprehensive
+```
+
+See [Ollama Integration Guide](docs/OLLAMA_INTEGRATION.md) for complete documentation.
+
+## GitHub Actions Workflows
+
+Automated workflows run on every push:
+
+1. **Test Suite** (`.github/workflows/test.yml`): Comprehensive testing across Python versions
+2. **Ollama Analysis** (`.github/workflows/ollama-analysis.yml`): AI-powered code analysis
+3. **Documentation** (`.github/workflows/docs.yml`): Auto-generate and publish docs to GitHub Pages
+
+## Documentation
+
+Full documentation is available at: [https://grumpified-oggvct.github.io/GrumpiMiner](https://grumpified-oggvct.github.io/GrumpiMiner)
+
+- [Vision Documents](docs/index.md): System vision and architecture
+- [Ollama Integration](docs/OLLAMA_INTEGRATION.md): AI-powered features
+- [Model Registry](docs/model-registry.md): Model specifications
+- [Analysis Reports](docs/analysis-report.md): Latest AI analysis results
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

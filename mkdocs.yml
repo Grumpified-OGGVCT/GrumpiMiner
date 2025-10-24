@@ -1,0 +1,42 @@
+site_name: GrumpiMiner Documentation
+site_description: Total Frontier Exploration System - Mining Across ALL Complexity Dimensions
+site_author: GrumpiMiner Team
+repo_url: https://github.com/Grumpified-OGGVCT/GrumpiMiner
+repo_name: Grumpified-OGGVCT/GrumpiMiner
+
+theme:
+  name: material
+  palette:
+    primary: deep purple
+    accent: purple
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - Vision Documents:
+      - 360-Degree Mining Engine: 360-degree-workflow-complexity-mining-engine.md
+      - Recursive Adaptive System: recursive-adaptive-self-validating-ultimate-convergent-workflow-mining-system.md
+  - Architecture:
+      - Model Registry: model-registry.md
+  - Analysis Reports:
+      - Latest Analysis: analysis-report.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
