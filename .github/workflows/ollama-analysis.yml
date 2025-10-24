@@ -45,7 +45,7 @@ jobs:
           --output docs/analysis-report.md
     
     - name: Upload analysis results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ollama-analysis-results
         path: docs/analysis-report.md
