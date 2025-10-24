@@ -153,6 +153,12 @@ venv.bak/
 
 # mkdocs documentation
 /site
+docs/site/
+
+# Ollama analysis outputs (keep in repo but ignore temp files)
+# docs/analysis-report.md is tracked
+*.tmp
+*.temp
 
 # mypy
 .mypy_cache/

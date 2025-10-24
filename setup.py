@@ -25,11 +25,17 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
     python_requires=">=3.8",
-    install_requires=[],
+    install_requires=[
+        "requests>=2.28.0",  # For Ollama API
+    ],
     extras_require={
         "dev": [
             "pytest>=7.0",
             "pytest-cov>=4.0",
+        ],
+        "docs": [
+            "mkdocs>=1.5.0",
+            "mkdocs-material>=9.0.0",
         ],
     },
 )

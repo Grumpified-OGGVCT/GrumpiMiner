@@ -1,0 +1,60 @@
+name: Ollama-Powered Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Ollama model to use'
+        required: false
+        default: 'llama3.2:3b'
+      analysis_type:
+        description: 'Type of analysis'
+        required: false
+        default: 'comprehensive'
+
+jobs:
+  ollama-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+        pip install requests
+    
+    - name: Run Ollama-powered code analysis
+      env:
+        OLLAMA_BASE_URL: ${{ secrets.OLLAMA_BASE_URL || 'http://localhost:11434' }}
+        OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+      run: |
+        python scripts/ollama_analysis.py \
+          --model ${{ github.event.inputs.model || 'llama3.2:3b' }} \
+          --analysis-type ${{ github.event.inputs.analysis_type || 'comprehensive' }} \
+          --output docs/analysis-report.md
+    
+    - name: Upload analysis results
+      uses: actions/upload-artifact@v3
+      with:
+        name: ollama-analysis-results
+        path: docs/analysis-report.md
+    
+    - name: Commit analysis to docs
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add docs/analysis-report.md
+        git diff --staged --quiet || git commit -m "Update Ollama analysis report [skip ci]"
+        git push
